@@ -1,12 +1,17 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dao.AlienRepo;
 import com.example.demo.model.Alien;
 
 @Controller
-public class HomeController {
+public class AlienController {
+	
+	@Autowired
+	AlienRepo repo;
 	
 	@RequestMapping("/")
 	public String home() {
@@ -16,7 +21,8 @@ public class HomeController {
 	
 	@RequestMapping("/addAlien")
 	public String addAlien(Alien alien) {
-		System.out.println("aid " + alien.getAid());
+		repo.save(alien);
+		System.out.println("stored aid " + alien.getAid());
 		return "home.jsp";
 	}
 
