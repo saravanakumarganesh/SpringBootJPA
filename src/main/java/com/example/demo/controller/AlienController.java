@@ -36,6 +36,7 @@ public class AlienController {
 		
 		System.out.println(repo.findByTech("java"));
 		System.out.println(repo.findByAidGreaterThan(102));
+		System.out.println(repo.findByTechSortByName("java"));
 		
 		mv.addObject(alien);
 		mv.setViewName("showAlien.jsp");
