@@ -7,13 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p>Add alien</p>
 	<form action="addAlien">
 		<input type="text" name="aid"><br>
 		<input type="text" name="aname"><br>
 		<input type="text" name="tech"><br>
 		<input type="submit"><br>
 	</form>
-		<form action="getAlien">
+	<p>Get alien by Id</p>
+	<form action="getAlien">
 		<input type="text" name="aid"><br>
 		<input type="submit"><br>
 	</form>
