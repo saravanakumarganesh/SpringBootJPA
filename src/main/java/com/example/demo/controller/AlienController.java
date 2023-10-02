@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,18 +55,28 @@ public class AlienController {
 		return mv;
 	}
 	
-	@RequestMapping(path="/aliens", produces= {"application/xml"})
+//	@RequestMapping(path="/aliens", produces= {"application/xml"})
+	@GetMapping(path="/aliens", produces= {"application/xml"})
 	@ResponseBody
 	public List<Alien> getAliens() {
 		
 		return restRepo.findAll();
 	}
 	
-	@RequestMapping("/alien/{aid}")
+//	@RequestMapping("/alien/{aid}")
+	@GetMapping("/alien/{aid}")
 	@ResponseBody
 	public Optional<Alien> getAlienRest(@PathVariable int aid) {
 		return restRepo.findById(aid);
 		
+	}
+	
+//	@RequestMapping("/alien")
+	@PostMapping("/alien")
+	@ResponseBody
+	public Alien addAlienRest(Alien alien) {
+		restRepo.save(alien);
+		return alien;
 	}
 
 }
